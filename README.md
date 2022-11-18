@@ -32,7 +32,7 @@ How to configure and ssh key for this repository:
 
 The following steps include instructions for compiling and installing the necessary dependencies on the EPS-UAM computers (year 2022).
 
-
+> Note: **Steps 3-9 can be runned using the command `source setup.bash`.** If you have the conda bash initialized and the code downloaded, used this command to setup all the environment.
 
 1. Be sure that you have a bash terminal with conda properly initialized. You can skip this step if you are using an anaconda prompt or if conda is initialized.
     
@@ -51,6 +51,7 @@ The following steps include instructions for compiling and installing the necess
     cd seq_nms_yolo
     ```
     
+
 1. Create a conda environment using the configuration file `seq_nms.yml` by running
 
     ```bash
@@ -93,7 +94,20 @@ The following steps include instructions for compiling and installing the necess
     wget https://pjreddie.com/media/files/yolo.weights
     wget https://pjreddie.com/media/files/yolov2-tiny.weights
     ```
+
+1. Ensure the `libdarknet.so` library is included in the `LD_LIBRARY_PATH`.
+
+    ```bash
+    LIBDARKNET_PATH='/home/alumnos/e321079/seq_nms_yolo-main/libdarknet.so'
+    export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-10.1/lib64
+    export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda-10.1/lib64:$LIBDARKET_PATH
+    ```
+
+
 ## Testing
+
+> Steps 1-5 can be runned using the comand `source setup.bash test`.
 
 At this point, the code should run properly. Test with a video example.
 
@@ -131,7 +145,7 @@ At this point, the code should run properly. Test with a video example.
     python yolo_seqnms.py
     ```
 
-2. Generate a video output by running the `img2video` script inside the video folder
+1. Generate a video output by running the `img2video` script inside the video folder
     
     ```bash
     cd video
