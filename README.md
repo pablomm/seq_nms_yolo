@@ -1,49 +1,50 @@
 # Seq_nms_YOLO
 
-#### Membres: Yunyun SUN, Yutong YAN, Sixiang XU, Heng ZHANG
-
----
-
-## Introduction
-
 ![](img/index.jpg) 
 
 This project combines **YOLOv2**([reference](https://arxiv.org/abs/1506.02640)) and **seq-nms**([reference](https://arxiv.org/abs/1602.08465)) to realise **real time video detection**.
 
-## GitHub setup
+> This repository is an adaptation of the [yolo_seq_nms](https://github.com/melodiepupu/seq_nms_yolo
+) project made by Yunyun SUN, Yutong YAN, Sixiang XU, Heng ZHANG for the deep learning for image signal processing course (2022). The code has been adapted to be able to **compile and run the models on the EPS laboratory computers**.
 
-In case you want to work with github (not just download the code), you must clone the repository via ssh. If this is not the case you can skip this configuration and download the code as zip from the github website or clone it without ssh.
 
-> The eps labs have the ssh port closed, so the git clone command may be stuck. In this case use another computer to avoid it or request to open the port.
 
+## GitHub setup (Preliminary)
+
+In case you want to work with github (not just download the code), you must clone the repository via ssh and use an ssh key to the permissions. If this is not the case you can skip this configuration and download the code as a zip from the github website.
+
+Note: The eps labs have the ssh port closed, so the git clone command may be stuck. In this case use another computer to avoid it or request to open the port.
+
+How to configure and ssh key for this repository:
 
 1. Create an ssh key
 
     ```bash
     ssh-keygen -t rsa -b 4096 -C "<your mail>"
     ```
-2. Add the public key as a deployment key in the repository [here](https://github.com/pablomm/seq_nms_yolo/settings/keys). The content of the public key can be printed as
+2. Add the public key as a _deployment key_ in the repository [here](https://github.com/pablomm/seq_nms_yolo/settings/keys). The content of the public key can be printed as
 
     ```bash
     cat ~/.ssh/id_rsa.pub
     ```
 
-
 ## Set up
 
 The following steps include instructions for compiling and installing the necessary dependencies on the EPS-UAM computers (year 2022).
 
-1. Be sure that you have a bash terminal with conda properly initialized (Optional, if you are using anaconda prompt or conda is initialized you can skip this step).
+
+
+1. Be sure that you have a bash terminal with conda properly initialized. You can skip this step if you are using an anaconda prompt or if conda is initialized.
     
-    a. Run conda initialization comand
+    a. Run conda initialization comand.
         
     ```bash
         conda init bash
     ```
 
-    b. Reload the terminal (open a new one)
+    b. Reload the terminal (open a new one) to run the following steps.
 
-1. Clone this repository and open a terminal on the root folder of this repository. It can be done by running. Skip this step if files are already in you local network.
+1. Clone this repository and open a terminal on the root folder of this repository. Skip this step if files are already in you local environment.
 
     ```bash
     git clone https://github.com/pablomm/seq_nms_yolo.git 
@@ -73,7 +74,7 @@ The following steps include instructions for compiling and installing the necess
     ```
 
 
-1. Include cuda libraries inside the path to be found during the compilation. 
+1. Include the cuda libraries inside the path to be found during compilation time. 
 
     ```bash
     export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
@@ -93,9 +94,10 @@ The following steps include instructions for compiling and installing the necess
     wget https://pjreddie.com/media/files/yolov2-tiny.weights
     ```
 ## Testing
-At this point, the code should be running properly. Test with a video example.
 
-1. Test you are using the correct python version (the one of the environment). In can be tested by running
+At this point, the code should run properly. Test with a video example.
+
+1. (Optional) Test you are using the correct python version (the one of the environment). In can be tested by running
 
     ```bash
     which python
@@ -108,11 +110,11 @@ At this point, the code should be running properly. Test with a video example.
     ```
     
 
-1. Copy a video file to the video folder, for example, `input.mp4`. If you do not have one, could be download one by running
+1. Copy a video file to the _video_ folder, for example, `input.mp4`. If you do not have one, you can download one by running
 
     ```bash
     cd video
-    wget https://www.pexels.com/video/3209828/download/ -O input.mp4
+    wget https://www.pexels.com/video/5538137/download/?fps=25.0&h=240&w=426 -O input.mp4
 
     ```
 1. Extract the frames of the video by running, inside the video folder, the `video2img` and `get_pkllist` scripts
@@ -142,3 +144,6 @@ At this point, the code should be running properly. Test with a video example.
 ## Reference
 
 This project copies lots of code from [darknet](https://github.com/pjreddie/darknet) , [Seq-NMS](https://github.com/lrghust/Seq-NMS) and  [models](https://github.com/tensorflow/models).
+
+Special thanks to the creators of the [carlosjimenezmwb/seq_nms_yolo](https://github.com/carlosjimenezmwb/seq_nms_yolo) repository used as the basis for the configuration of the project on the EPS-UAM computers with their specific CUDA libraries.
+
