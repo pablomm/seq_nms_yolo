@@ -138,11 +138,11 @@ At this point, the code should run properly. Test with a video example.
     python get_pkllist.py
     ```
 
-1. Run (inside the project root folder) the `yolo_seqnms` script to generate output images
+1. Run (inside the project root folder) the `yolo_seqnms.py` script to generate output images. To run the algorithm without the seq-NMS step use the `yolo_alone.py` script.
 
     ```bash
     cd .. # Return to the project root folder
-    python yolo_seqnms.py
+    python yolo_seqnms.py # or yolo_alone.py
     ```
 
 1. Generate a video output by running the `img2video` script inside the video folder
