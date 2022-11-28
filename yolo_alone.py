@@ -201,9 +201,9 @@ def deleteLink(dets,links, rootindex, maxpath,thesh):
 
 def dsnms(res):
     dets=createInputs(res)
-    #links=createLinks(dets)
-    #maxPath(dets,links)
-    NMS(dets)
+    links=createLinks(dets)
+    # maxPath(dets,links)
+    # NMS(dets)
     boxes=[[] for i in dets[0]]
     classes=[[] for i in dets[0]]
     scores=[[] for i in dets[0]]
